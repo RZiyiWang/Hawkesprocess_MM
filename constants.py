@@ -1,0 +1,37 @@
+import tensorflow as tf
+
+actor_fc_layers=[64, 128, 256] 
+actor_output_fc_layers=(64,) 
+actor_lstm_size=(64,) 
+actor_learning_rate=3e-4
+critic_obs_fc_layers=[64, 128] 
+critic_action_fc_layers=[64, 128] #[32, 64]
+critic_joint_fc_layers=[64, 128, 256]
+critic_output_fc_layers=(64,) 
+critic_lstm_size=(64,) 
+critic_learning_rate=3e-4
+alpha_learning_rate=3e-4
+target_update_tau=0.05
+target_update_period=5 #1
+td_errors_loss_fn=tf.math.squared_difference
+gamma=0.99
+reward_scale_factor=1 #0.1
+gradient_clipping=None
+debug_summaries=False
+summarize_grads_and_vars=False
+replay_buffer_capacity=100000
+initial_collect_episodes=100 #100
+collect_episodes_per_iteration=1
+use_tf_functions=True
+summaries_flush_secs=10
+num_eval_episodes=10 # better:200
+observations_allowlist='position'
+eval_metrics_callback=None
+batch_size=64
+train_sequence_length=20
+#num_iterations=10000
+train_steps_per_iteration=200
+eval_interval=200
+log_interval=200
+summary_interval=200
+global_step = tf.compat.v1.train.get_or_create_global_step()
